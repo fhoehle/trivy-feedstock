@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: trivy
-  version: "0.69.3"
+  version: "0.70.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/aquasecurity/${{ name }}/archive/v${{ version }}.tar.gz
-    sha256: 3ca5fa62932273dd7eef3b6ec762625da42304ebb8f13e4be9fdd61545ca1773
+    sha256: ff9ac06468aab89802388f16d1d179f4680db714afbf6a8132a417d288aa008e
     target_directory: src
   # csaf_distribution licenses
   - url: https://raw.githubusercontent.com/gocsaf/csaf/refs/heads/main/LICENSES/Apache-2.0.txt
@@ -36,7 +36,8 @@ build:
         - go build -v -o %LIBRARY_BIN%\trivy.exe -ldflags="-s"
         - for /f %%I in ('go list -m -f "{{.Dir}}" github.com/cyberphone/json-canonicalization') do copy "%%I\LICENSE" "%SRC_DIR%\json-canonicalization-LICENSE"
         - for /f %%I in ('go list -m -f "{{.Dir}}" github.com/in-toto/in-toto-golang') do copy "%%I\LICENSE" "%SRC_DIR%\in-toto-golang-LICENSE"
-    - go-licenses save . --save_path ../../../licenses --ignore github.com/aquasecurity/trivy --ignore github.com/csaf-poc/csaf_distribution --ignore modernc.org/mathutil --ignore github.com/gocsaf/csaf/v3/csaf --ignore github.com/gocsaf/csaf/v3/util --ignore github.com/xi2/xz --ignore github.com/cyberphone/json-canonicalization --ignore github.com/in-toto/in-toto-golang --ignore github.com/in-toto/attestation
+    - go-licenses save . --save_path ../../../licenses --ignore github.com/aquasecurity/trivy --ignore github.com/csaf-poc/csaf_distribution --ignore modernc.org/mathutil --ignore github.com/gocsaf/csaf/v3/csaf --ignore github.com/gocsaf/csaf/v3/util --ignore github.com/xi2/xz --ignore 
+      github.com/cyberphone/json-canonicalization --ignore github.com/in-toto/in-toto-golang --ignore github.com/in-toto/attestation
 
 requirements:
   build:
