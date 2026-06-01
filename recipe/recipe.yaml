@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: trivy
-  version: "0.70.0"
+  version: "0.71.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   - url: https://github.com/aquasecurity/${{ name }}/archive/v${{ version }}.tar.gz
-    sha256: ff9ac06468aab89802388f16d1d179f4680db714afbf6a8132a417d288aa008e
+    sha256: 922f2e818849201df66fecdc9cf8b5f5d315130e476c1460621ab447db7d744f
     target_directory: src
   # csaf_distribution licenses
   - url: https://raw.githubusercontent.com/gocsaf/csaf/refs/heads/main/LICENSES/Apache-2.0.txt
